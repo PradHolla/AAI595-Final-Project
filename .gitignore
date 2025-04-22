@@ -176,3 +176,4 @@ cython_debug/
 *.pt
 *.pth
 data/
+lightning_logs/
