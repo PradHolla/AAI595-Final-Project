@@ -19,34 +19,34 @@ import sys
 import logging
 from datetime import datetime
 
-# Create logs directory if it doesn't exist
-os.makedirs("logs", exist_ok=True)
+# # Create logs directory if it doesn't exist
+# os.makedirs("logs", exist_ok=True)
 
-# Generate timestamp for unique log file
-timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-log_file = f"logs/training_{timestamp}.log"
+# # Generate timestamp for unique log file
+# timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+# log_file = f"logs/training_{timestamp}.log"
 
-# Configure root logger
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(log_file),
-        logging.StreamHandler(sys.stdout)  # Explicitly use stdout
-    ]
-)
+# # Configure root logger
+# logging.basicConfig(
+#     level=logging.INFO,
+#     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+#     handlers=[
+#         logging.FileHandler(log_file),
+#         logging.StreamHandler(sys.stdout)  # Explicitly use stdout
+#     ]
+# )
 
-# Force logs to be written immediately
-for handler in logging.root.handlers:
-    if isinstance(handler, logging.FileHandler):
-        handler.flush()
+# # Force logs to be written immediately
+# for handler in logging.root.handlers:
+#     if isinstance(handler, logging.FileHandler):
+#         handler.flush()
 
-# Configure Lightning loggers
-lightning_logger = logging.getLogger("lightning.pytorch")
-lightning_logger.setLevel(logging.INFO)
+# # Configure Lightning loggers
+# lightning_logger = logging.getLogger("lightning.pytorch")
+# lightning_logger.setLevel(logging.INFO)
 
-# Add an explicit test log entry
-logging.info(f"Logging initialized. Log file: {os.path.abspath(log_file)}")
+# # Add an explicit test log entry
+# logging.info(f"Logging initialized. Log file: {os.path.abspath(log_file)}")
 
 # Important: Add this custom callback to your trainer
 class LoggingCallback(pl.Callback):
